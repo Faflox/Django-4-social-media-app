@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Logowanie{% endblock %}
+
+{% block content %}
+    <h1>Logowanie</h1>
+    <p>Wypełnij poniższy formularz:</p>
+    <form method="POST">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type='submit' value="Zaloguj"></p>
+    </form>
+{% endblock %}
