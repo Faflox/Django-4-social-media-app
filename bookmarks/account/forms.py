@@ -21,6 +21,14 @@ class UserRegistrationForm(forms.ModelForm):
             raise forms.ValidationError('Hasła nie są takie same.')
         return cd['password2']
     
+    def clean_email(self):
+        data = self.cleaned_data['email']
+        qs = User.objects.exclude(id=self.instance.id).filter(email=data)
+        
+        if qs.exists():
+            raise forms.ValidationError('Ten adres e-mail jest zajęty.')
+        return data
+    
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
