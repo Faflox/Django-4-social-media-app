@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -142,4 +142,34 @@ MEDIA_ROOT = BASE_DIR / 'media'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
+]
+
+
+#WARTOŚCI POBRANE Z FACEBOOK
+SOCIAL_AUTH_FACEBOOK_KEY = '3354156134888758'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'ec5ab33d13f5549329ab14a926dc8ad8'
+
+#TWITTER
+SOCIAL_AUTH_TWITTER_KEY = 'PRX1Vz33X9zr5aGqOwThX32Qb'
+SOCIAL_AUTH_TWITTER_SECRET = 'PSM6iL44mWU7R64qTW3J9RCvIAbOHloALwiNX1VI0UbJhWePWJ'
+#client ID eHh6R1BRNkt2ckFmY3lmYmZ0WFo6MTpjaQ
+#client SECRET r0zzjfzl16K1ri31XyVrnUgDt9urkX0pJUOm4uDmTbpz3LGXGb
+
+#GOOGLE
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '773950305856-s8hg41c8c1fkrocabhv6km1epc1mpgq3.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+SOCIAL_AUTH_PIPELINE = [
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.user.create_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
 ]

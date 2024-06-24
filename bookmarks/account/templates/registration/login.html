@@ -19,6 +19,26 @@
             <input type="hidden" name="next" value="{{ next }}">
             <p><input type='submit' value='Zaloguj'></p>
         </form>
+        <div class="social">
+            <ul>
+                <!--Login Oauth-->
+                <li class="facebook">
+                    <a href="{% url 'social:begin' 'facebook' %}">
+                        Zaloguj się za pomocą konta Facebook
+                    </a>
+                </li>
+                <li class="twitter">
+                    <a href="{% url 'social:begin' 'twitter' %}">
+                        Zaloguj się za pomocą X
+                    </a>
+                </li>
+                <li class="google">
+                    <a href="{% url 'social:begin' 'google-oauth2' %}">
+                        Zaloguj się za pomocą Google
+                    </a>
+                </li>
+            </ul>
+        </div>
         <p>
             <a href="{% url 'password_reset' %}">
                 Zapomniałeś/zapomniałaś hasła?
