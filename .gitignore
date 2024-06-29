@@ -1,4 +1,4 @@
 # Environments
-.win-venv
-.mac-venv
-.env
+win-venv/
+mac-venv/
+env/
