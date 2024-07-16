@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from images.forms import ImageCreateForm
 from django.shortcuts import get_object_or_404
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.http import require_POST
-from images.models import Image
-from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from images.models import Image
+from images.forms import ImageCreateForm
 
 # Create your views here.
 @login_required
@@ -71,4 +70,9 @@ def image_list(request):
                       'images/image/list_images.html',
                       {'section': 'images',
                       'images': images})
+    else:
+        return render(request,
+                      'images/image/list.html',
+                      {'section': 'images',
+                       'images': images})
         
